@@ -146,3 +146,17 @@ tests/          # pytest
 data/           # SQLite（宿主机 ./data ↔ 容器 /data）
 Dockerfile / docker-compose.yml / compose.env
 ```
+
+## MCP 写入通道（v0.2.1）
+
+`/mcp/`（Streamable HTTP）暴露写工具，鉴权同 INGEST_TOKEN（Bearer）。设计上由 Alterego 作为 MCP client 挂载（`ALTEREGO_MCP_SERVERS_JSON`），写路径统一收编进 Alterego 的鉴权体系；面板/查询仍走 REST。
+
+- `ingest_report(report)` — 推检验报告，幂等语义同 REST
+- `create_person(person)` — 建档，重复 external_ref 返回 409
+- `confirm_mapping(mapping)` — 人工确认术语别名
+
+构建（国内网络）：
+```
+docker build --build-arg PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/ -t healthhub:latest .
+```
+测试：`python -m pytest tests/test_mcp.py -q`（注意 test_csv_* / test_ingest 的 CSV 用例依赖本机 `F:\health\data\` 路径，非 Windows 环境跳过属预期）

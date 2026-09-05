@@ -13,6 +13,15 @@ log = logging.getLogger("healthhub")
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
+    db = Database(settings)
+
+    # MCP 写通道（fastmcp Streamable HTTP）。失败不阻塞主服务。
+    mcp_http = None
+    try:
+        from app.mcp import create_mcp
+        mcp_http = create_mcp(db, settings).http_app(transport="streamable-http", path="/")
+    except Exception:
+        log.warning("MCP channel unavailable", exc_info=True)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -28,7 +37,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             scheduler = make_scheduler(settings)
             scheduler.start()
             log.info("scheduler started, daily report at %s %s", settings.daily_report_time, settings.app_tz)
-        yield
+        if mcp_http is not None:
+            async with mcp_http.lifespan(app):
+                yield
+        else:
+            yield
         if scheduler:
             scheduler.shutdown(wait=False)
         db.engine.dispose()
@@ -36,7 +49,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title="HealthHub", version="0.2.0", lifespan=lifespan,
                   docs_url=None, redoc_url=None, openapi_url=None)
     app.state.settings = settings
-    app.state.db = Database(settings)
+    app.state.db = db
+
+    if mcp_http is not None:
+        from app.mcp import bearer_gate
+        app.mount("/mcp", bearer_gate(mcp_http, settings), name="mcp")
+        log.info("MCP write channel mounted at /mcp")
 
     from app.routers import admin, conditions, dashboard, discussion, entry, events, exports, ingest, insights, mappings, observations, persons, records, sources_page, onepager, speak, uploads
     app.include_router(persons.router)
