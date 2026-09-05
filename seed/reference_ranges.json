@@ -1,0 +1,23 @@
+[
+  {"canonical": "WBC", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 3.5, "high": 9.5, "expected": null, "source": "curated"},
+  {"canonical": "GLU", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 3.9, "high": 6.1, "expected": null, "source": "curated"},
+  {"canonical": "HGB", "sex": "M", "age_min": null, "age_max": null, "kind": "numeric", "low": 130, "high": 175, "expected": null, "source": "curated"},
+  {"canonical": "HGB", "sex": "F", "age_min": null, "age_max": null, "kind": "numeric", "low": 115, "high": 150, "expected": null, "source": "curated"},
+  {"canonical": "PLT", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 125, "high": 350, "expected": null, "source": "curated"},
+  {"canonical": "CRP", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 0, "high": 6, "expected": null, "source": "curated"},
+  {"canonical": "CREA", "sex": "M", "age_min": null, "age_max": null, "kind": "numeric", "low": 44, "high": 97, "expected": null, "source": "curated"},
+  {"canonical": "URO", "sex": null, "age_min": null, "age_max": null, "kind": "categorical", "low": null, "high": null, "expected": "阴性", "source": "curated"},
+  {"canonical": "PRO", "sex": null, "age_min": null, "age_max": null, "kind": "categorical", "low": null, "high": null, "expected": "阴性", "source": "curated"},
+
+  {"canonical": "BP_SYS", "sex": null, "age_min": 18, "age_max": null, "kind": "numeric", "low": 90, "high": 139, "expected": null, "source": "curated"},
+  {"canonical": "BP_DIA", "sex": null, "age_min": 18, "age_max": null, "kind": "numeric", "low": 60, "high": 89, "expected": null, "source": "curated"},
+  {"canonical": "HR", "sex": null, "age_min": 12, "age_max": null, "kind": "numeric", "low": 60, "high": 100, "expected": null, "source": "curated"},
+  {"canonical": "SPO2", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 95, "high": 100, "expected": null, "source": "curated"},
+  {"canonical": "TEMP", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 36.1, "high": 37.2, "expected": null, "source": "curated"},
+  {"canonical": "RR", "sex": null, "age_min": 12, "age_max": null, "kind": "numeric", "low": 12, "high": 20, "expected": null, "source": "curated"},
+  {"canonical": "BMI", "sex": null, "age_min": 18, "age_max": null, "kind": "numeric", "low": 18.5, "high": 23.9, "expected": null, "source": "curated"},
+  {"canonical": "SLEEP_HRS", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 7, "high": 9, "expected": null, "source": "curated"},
+  {"canonical": "WAIST", "sex": "M", "age_min": null, "age_max": null, "kind": "numeric", "low": null, "high": 90, "expected": null, "source": "curated"},
+  {"canonical": "WAIST", "sex": "F", "age_min": null, "age_max": null, "kind": "numeric", "low": null, "high": 85, "expected": null, "source": "curated"},
+  {"canonical": "GLU_HOME", "sex": null, "age_min": null, "age_max": null, "kind": "numeric", "low": 3.9, "high": 7.8, "expected": null, "source": "curated"}
+]

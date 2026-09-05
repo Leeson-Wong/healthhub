@@ -1,0 +1,10 @@
+[
+  {"canonical": "GLU", "from_unit": "mg/dL", "to_unit": "mmol/L", "factor": 0.05551},
+  {"canonical": "CREA", "from_unit": "mg/dL", "to_unit": "μmol/L", "factor": 88.4},
+  {"canonical": "UA", "from_unit": "mg/dL", "to_unit": "μmol/L", "factor": 59.48},
+  {"canonical": "BUN", "from_unit": "mg/dL", "to_unit": "mmol/L", "factor": 0.357},
+  {"canonical": "BUN", "from_unit": "g/L", "to_unit": "mmol/L", "factor": 35.7},
+  {"canonical": "TBIL", "from_unit": "mg/dL", "to_unit": "μmol/L", "factor": 17.1},
+  {"canonical": "DBIL", "from_unit": "mg/dL", "to_unit": "μmol/L", "factor": 17.1},
+  {"canonical": "UA", "from_unit": "μmol/L", "to_unit": "mg/dL", "factor": 0.01681}
+]

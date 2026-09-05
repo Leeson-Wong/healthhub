@@ -1,0 +1,8 @@
+data/
+compose.env
+dist/
+*.tar.gz
+__pycache__/
+.venv/
+.pytest_cache/
+*.db

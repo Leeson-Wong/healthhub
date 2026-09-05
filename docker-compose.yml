@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    image: healthhub:latest
+    container_name: healthhub
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file: compose.env
+    volumes:
+      - ./data:/data
+      # optional: put seed CSVs under ./data/seed_csv and import once (see README)
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
