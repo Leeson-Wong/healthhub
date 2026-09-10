@@ -1,8 +1,6 @@
-data/
+.env
 compose.env
-dist/
-*.tar.gz
+data/
 __pycache__/
-.venv/
-.pytest_cache/
-*.db
+*.pyc
+.DS_Store
